@@ -6,9 +6,9 @@ import 'dart:async';
 class CircularSplash extends StatefulWidget {
   CircularSplash(
       {Key key,
-        @required this.controller,
-        @required this.child,
-        this.onWillPop})
+      @required this.controller,
+      @required this.child,
+      this.onWillPop})
       : assert(controller != null),
         assert(child != null),
         duration = controller.duration,
@@ -103,7 +103,7 @@ class _CircularSplashState extends State<CircularSplash>
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.height,
                 decoration:
-                BoxDecoration(shape: BoxShape.circle, color: _color),
+                    BoxDecoration(shape: BoxShape.circle, color: _color),
               ),
             ),
           );
@@ -119,7 +119,7 @@ class CircularSplashController {
 
   CircularSplashController(
       {this.duration = const Duration(milliseconds: 300),
-        this.color = Colors.white})
+      this.color = Colors.white})
       : assert(color != null),
         assert(duration != null);
 
@@ -164,13 +164,30 @@ class CircularSplashController {
     });
   }
 
-  Future<Object> push(BuildContext context, Widget builder) {
+  Future<Object> push(BuildContext context, Widget builder,
+      {Color color = Colors.white,
+      Duration duration = const Duration(milliseconds: 300)}) {
     return _runPush(() {
-      return Navigator.push(context, CircularSplashRoute(builder: builder))
+      return Navigator.push(
+              context,
+              CircularSplashRoute(
+                  builder: builder, duration: duration, color: color))
           .then((value) {
         _runPop();
         return value;
       });
+    });
+  }
+
+  void pushReplacement(BuildContext context, Widget builder,
+      {Color color = Colors.white,
+      Duration duration = const Duration(milliseconds: 300)}) {
+    _runPush(() {
+      Navigator.pushReplacement(
+          context,
+          CircularSplashRoute(
+              builder: builder, duration: duration, color: color));
+      dispose();
     });
   }
 
