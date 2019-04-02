@@ -1,3 +1,8 @@
+## 0.1.3
+* Upgraded description.
+## 0.1.2
+* Bug fix.
+* Add README and Example in Github.
 ## 0.1.1
 * Bug fix.
 * Add new methods in controller: `controller.push()` and `controller.pushReplacement()`.

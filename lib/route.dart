@@ -10,28 +10,28 @@ class CircularSplashRoute extends PageRouteBuilder {
 
   CircularSplashRoute(
       {@required this.builder,
-        this.color = Colors.white,
-        this.duration = const Duration(milliseconds: 300)})
+      this.color = Colors.white,
+      this.duration = const Duration(milliseconds: 300)})
       : assert(color != null),
         assert(builder != null),
         assert(duration != null),
         super(
-        pageBuilder: (BuildContext context, Animation<double> animation,
-            Animation<double> secondaryAnimation) {
-          return builder;
-        },
-        transitionsBuilder: (BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-            Widget child) {
-          return Transition(
-            color: color,
-            animation: animation,
-            widget: builder,
-            context: context,
-          );
-        },
-      );
+          pageBuilder: (BuildContext context, Animation<double> animation,
+              Animation<double> secondaryAnimation) {
+            return builder;
+          },
+          transitionsBuilder: (BuildContext context,
+              Animation<double> animation,
+              Animation<double> secondaryAnimation,
+              Widget child) {
+            return Transition(
+              color: color,
+              animation: animation,
+              widget: builder,
+              context: context,
+            );
+          },
+        );
 }
 
 class Transition extends StatelessWidget {
@@ -44,9 +44,9 @@ class Transition extends StatelessWidget {
 
   Transition(
       {@required this.animation,
-        @required this.widget,
-        @required this.context,
-        @required this.color})
+      @required this.widget,
+      @required this.context,
+      @required this.color})
       : size = MediaQuery.of(context).size,
         animationScale = Tween<double>(begin: 1.0, end: 0.0).animate(animation);
 

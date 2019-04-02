@@ -164,9 +164,7 @@ class CircularSplashController {
     });
   }
 
-  Future<Object> push(BuildContext context, Widget builder,
-      {Color color = Colors.white,
-      Duration duration = const Duration(milliseconds: 300)}) {
+  Future<Object> push(BuildContext context, Widget builder) {
     return _runPush(() {
       return Navigator.push(
               context,
@@ -179,9 +177,7 @@ class CircularSplashController {
     });
   }
 
-  void pushReplacement(BuildContext context, Widget builder,
-      {Color color = Colors.white,
-      Duration duration = const Duration(milliseconds: 300)}) {
+  void pushReplacement(BuildContext context, Widget builder) {
     _runPush(() {
       Navigator.pushReplacement(
           context,
